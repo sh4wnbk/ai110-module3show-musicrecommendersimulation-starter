@@ -17,18 +17,48 @@ Replace this paragraph with your own summary of what your version does.
 
 ## How The System Works
 
-Explain your design in plain language.
+This simulation uses **content-based filtering** — scoring each song against a 
+user's taste profile based on shared attributes. No user history or crowd behavior 
+is needed; recommendations are driven entirely by song attributes and stated preferences.
 
-Some prompts to answer:
+### How Real Systems Work
+Platforms like Spotify use a hybrid of two approaches: **collaborative filtering** 
+(recommending based on what similar users enjoy) and **content-based filtering** 
+(matching songs to a user's taste using audio attributes). Our simulation focuses 
+on content-based filtering, which avoids the cold-start problem and keeps every 
+recommendation explainable.
 
-- What features does each `Song` use in your system
-  - For example: genre, mood, energy, tempo
-- What information does your `UserProfile` store
-- How does your `Recommender` compute a score for each song
-- How do you choose which songs to recommend
+### Song Features Used
+Each `Song` is scored using the following attributes:
+- `genre` — categorical (e.g. pop, lofi, rock, jazz)
+- `mood` — categorical (e.g. happy, chill, intense, focused)
+- `energy` — numerical, 0.0–1.0 (how active/intense the track feels)
+- `tempo_bpm` — numerical, beats per minute
+- `valence` — numerical, 0.0–1.0 (musical positivity)
+- `danceability` — numerical, 0.0–1.0
 
-You can include a simple diagram or bullet list if helpful.
+### User Profile
+Each `UserProfile` stores a taste profile dictionary with target values for:
+- `favorite_genre` — preferred genre (exact match)
+- `favorite_mood` — preferred mood (exact match)
+- `target_energy` — ideal energy level (0.0–1.0)
 
+### Scoring Logic (Algorithm Recipe)
+Each song is scored against the user profile as follows:
+- **+2.0** for a genre match
+- **+1.0** for a mood match
+- **+0.0–1.0** for energy proximity (1.0 minus the absolute difference)
+
+Songs are then ranked highest-to-lowest score and the top K results are returned.
+
+### Potential Biases
+- The dataset has 3 lofi songs and 2 pop songs out of 10 — genre-heavy profiles 
+  may over-recommend these.
+- Genre is weighted highest, so a great mood/energy match with the wrong genre 
+  will rank lower than a genre match with mismatched feel.
+
+---
+![Data Flow Diagram](assets/data_flow.PNG)
 ---
 
 ## Getting Started
