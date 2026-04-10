@@ -11,7 +11,10 @@ Your goal is to:
 - Evaluate what your system gets right and wrong
 - Reflect on how this mirrors real world AI recommenders
 
-Replace this paragraph with your own summary of what your version does.
+This version loads a 20-song CSV catalog, scores each song with a transparent
+content-based rule, and returns the top K songs for a user profile. The scoring
+prioritizes exact genre and mood matches, then fine-tunes rank by energy
+closeness to the user's target_energy.
 
 ---
 
@@ -38,7 +41,7 @@ Each `Song` is scored using the following attributes:
 - `danceability` — numerical, 0.0–1.0
 
 ### User Profile
-Each `UserProfile` stores a taste profile dictionary with target values for:
+Each `UserProfile` stores a taste profile dictionary with target_energy values for:
 - `favorite_genre` — preferred genre (exact match)
 - `favorite_mood` — preferred mood (exact match)
 - `target_energy` — ideal energy level (0.0–1.0)
@@ -52,13 +55,37 @@ Each song is scored against the user profile as follows:
 Songs are then ranked highest-to-lowest score and the top K results are returned.
 
 ### Potential Biases
-- The dataset has 3 lofi songs and 2 pop songs out of 10 — genre-heavy profiles 
-  may over-recommend these.
+- The dataset still leans toward a few repeated genres, so genre-heavy profiles
+  may over-recommend those clusters.
 - Genre is weighted highest, so a great mood/energy match with the wrong genre 
   will rank lower than a genre match with mismatched feel.
 
 ---
-![Data Flow Diagram](assets/data_flow.PNG)
+```mermaid
+flowchart TD
+  A([Start: User Requests Recommendations]) --> B[📥 INPUT<br/>User Preference Profile:<br/>• favorite_genres list<br/>• favorite_moods list<br/>• target_energy 0.0-1.0]
+  B --> C[📂 Load Songs<br/>Read songs.csv<br/>into memory]
+  C --> D[Initialize<br/>scored_songs = []]
+  D --> E[🔄 FOR EACH song in<br/>songs.csv]
+  E --> F[🎵 Current Song:<br/>genre, mood, energy,<br/>danceability, etc.]
+  F --> G{Genre in<br/>favorite_genres?}
+  G -->|Yes| G1[genre_score = +2.0]
+  G -->|No| G2[genre_score = 0.0]
+  G1 --> H{Mood in<br/>favorite_moods?}
+  G2 --> H
+  H -->|Yes| H1[mood_score = +1.0]
+  H -->|No| H2[mood_score = 0.0]
+  H1 --> I[⚡ Energy Proximity<br/>energy_score =<br/>1.0 - abs<br/>target_energy - song_energy]
+  H2 --> I
+  I --> J[📊 SCORING RULE<br/>total_score =<br/>genre_score +<br/>mood_score +<br/>energy_score]
+  J --> K[Store:<br/>scored_songs.append<br/>song, total_score]
+  K --> L{More songs<br/>to score?}
+  L -->|Yes| E
+  L -->|No| M[🔗 RANKING RULE<br/>Sort by score<br/>descending<br/>highest → lowest]
+  M --> N[Slice Top K<br/>top_k_songs =<br/>scored_songs[0:K]]
+  N --> O[📤 OUTPUT<br/>Return Top K<br/>Recommendations<br/>with scores]
+  O --> P([✅ End])
+```
 ---
 
 ## Getting Started
