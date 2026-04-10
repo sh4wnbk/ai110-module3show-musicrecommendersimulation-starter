@@ -111,6 +111,12 @@ pip install -r requirements.txt
 python -m src.main
 ```
 
+### Example Recommendation Output
+
+Terminal output example showing recommended song title, artist, score, and reasons:
+
+![Terminal recommendation output](assets/recommendation-output.png)
+
 ### Running Tests
 
 Run the starter tests with:
