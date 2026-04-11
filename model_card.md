@@ -2,7 +2,7 @@
 
 ## Model Name
 
-🎧 THE GENRE-BENDER
+🎧 THE SOUND-BENDER
 
 ## Goal / Task
 
@@ -50,6 +50,47 @@ I checked the top 5 results for each profile.
 I also compared the outputs before and after a weight-shift experiment.
 That experiment showed that stronger energy weighting changed the ranking more than the genre weight did.
 I also compared the catalog genre counts with the recommendation counts to look for repetition and bias.
+
+## Optional Extensions Implemented (Plain Language)
+
+I implemented all 4 optional extension challenges and captured a side-by-side dashboard screenshot-like artifact.
+
+- Dashboard image artifact: [assets/side_by_side_table.png](assets/side_by_side_table.png)
+
+### Challenge 1: Advanced Song Features
+
+I expanded the song data with additional features that were not in the baseline:
+
+- Popularity (0-100)
+- Release Year
+- Detailed Mood Tag
+- Instrumentalness
+- Speechiness
+- Liveness
+
+In plain terms, this means the recommender now looks beyond just genre/mood/energy and can reward songs that better match a preferred era, detailed vibe, and audio texture profile.
+
+### Challenge 2: Multiple Scoring Modes
+
+I built multiple scoring strategies so the same user can be ranked in different ways:
+
+- Conservative mode: balanced and stable with trend/discovery bonuses
+- Discovery mode: leans more toward hidden gems and exploratory matching
+- Hybrid mode: blends Conservative and Discovery using alpha
+
+In plain terms, this lets the recommender behave like a "safe" mode, an "explore" mode, or a blend between the two.
+
+### Challenge 3: Diversity and Fairness Logic
+
+I added a Diversity Penalty of -0.5 when an artist is already in the selected top-k list.
+
+In plain terms, this reduces artist repetition so recommendations feel less repetitive and more varied.
+
+### Challenge 4: Visual Summary Table
+
+I built a visual side-by-side terminal summary using Rich, including scores and per-mode reasons.
+
+In plain terms, you can quickly compare why a song ranks differently across Conservative, Discovery, and Hybrid without reading raw logs.
 
 ## ✅ Intended Use and ❌ Non-Intended Use
 
