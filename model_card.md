@@ -55,7 +55,7 @@ Compared the catalog genre counts with the recommendation counts to look for rep
 
 All 4 optional extension challenges were implemented.
 
-**Dashboard Comparison**: [./assets/side_by_side_table.png](./assets/side_by_side_table.png)
+**Dashboard Comparison**: ![Dashboard Side-by-Side](assets/side_by_side_table.png)
 
 ### Challenge 1: Advanced Song Features
 
