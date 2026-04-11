@@ -166,7 +166,7 @@ Doubling energy weight and halving genre weight caused significant reordering fo
 
 ---
 
-## Why "Gym Hero" Keeps Showing Up (Plain Language)
+## Why "Gym Hero" Keeps Showing Up
 
 Think of the model like a point game.
 If a song is very close to the requested energy, it gets a lot of points.
