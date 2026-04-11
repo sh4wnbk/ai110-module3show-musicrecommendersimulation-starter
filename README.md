@@ -74,10 +74,7 @@ Top 5 recommendations (paste terminal output here):
 - Rooftop Lights - Indigo Parade (Score: 3.58)
 - Retro Future - 80s Kids (Score: 3.46)
 
-Screenshot:
- ![High-Energy Pop recommendations](assets/profile-high-energy-pop.png) 
-
-— Terminal output showing top-5 with scores and reasons
+![High-Energy Pop recommendations](assets/profile-high-energy-pop.png) 
 
 ### Profile 2: Chill Lofi
 
@@ -88,10 +85,7 @@ Top 5 recommendations (paste terminal output here):
 - Spacewalk Thoughts - Orbit Bloom (Score: 3.76)
 - Focus Flow - LoRoom (Score: 3.40)
 
-Screenshot:
- ![Chill Lofi recommendations](assets/profile-chill-lofi.png) 
- 
- — Terminal output showing top-5 with scores and reasons
+![Chill Lofi recommendations](assets/profile-chill-lofi.png) 
 
 ### Profile 3: Deep Intense Rock
 
@@ -102,10 +96,7 @@ Top 5 recommendations (paste terminal output here):
 - Viking Thunder - Odin's Echo (Score: 3.67)
 - Funkytown Express - The Grooveliner (Score: 3.00)
 
-Screenshot:
- ![Deep Intense Rock recommendations](assets/profile-deep-intense-rock.png) 
- 
- — Terminal output showing top-5 with scores and reasons
+![Deep Intense Rock recommendations](assets/profile-deep-intense-rock.png) 
 
 ### Profile 4: Conflicting Happy but Low Energy
 
@@ -116,10 +107,7 @@ Top 5 recommendations (paste terminal output here):
 - Spacewalk Thoughts - Orbit Bloom (Score: 2.76)
 - Library Rain - Paper Lanterns (Score: 2.55)
 
-Screenshot:
- ![Conflicting Happy but Low Energy recommendations](assets/profile-conflicting-happy-low-energy.png) 
- 
- — Terminal output showing top-5 with scores and reasons
+![Conflicting Happy but Low Energy recommendations](assets/profile-conflicting-happy-low-energy.png) 
 
 ### Profile 5: Sad but High Energy
 
@@ -130,10 +118,7 @@ Top 5 recommendations (paste terminal output here):
 - Funkytown Express - The Grooveliner (Score: 2.85)
 - Viking Thunder - Odin's Echo (Score: 2.82)
 
-Screenshot:
- ![Sad but High Energy recommendations](assets/profile-sad-high-energy.png) 
- 
- — Terminal output showing top-5 with scores and reasons
+![Sad but High Energy recommendations](assets/profile-sad-high-energy.png) 
 
 ### Profile 6: Noisy Mismatch
 
@@ -144,11 +129,8 @@ Top 5 recommendations (paste terminal output here):
 - Spacewalk Thoughts - Orbit Bloom (Score: 2.46)
 - Library Rain - Paper Lanterns (Score: 2.25)
 
-Screenshot:
- ![Noisy Mismatch recommendations](assets/profile-noisy-mismatch.png) 
+![Noisy Mismatch recommendations](assets/profile-noisy-mismatch.png) 
  
- — Terminal output showing top-5 with scores and reasons
-
 ---
 
 ## Verifiable Evaluation Snapshot
