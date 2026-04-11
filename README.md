@@ -224,11 +224,11 @@ So when users ask for something like "Happy Pop" with high energy, the model may
 
 ## Lesson Learned
 
-When output doesn't feel right, check two things:
+When output does not feel right, check two things:
 1. **Is the scoring logic working as designed?** (Profile 5: yes, it's weighting energy heavily)
 2. **Is the user input actually coherent?** (Profile 5: no, "sad + lofi + high energy" is contradictory)
 
-Good recommendation systems can't fix bad user intent. They can only amplify it.
+Good recommendation systems cannot fix bad user intent. They can only amplify it.
 
 ---
 
