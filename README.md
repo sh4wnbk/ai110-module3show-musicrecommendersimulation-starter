@@ -75,7 +75,9 @@ Top 5 recommendations (paste terminal output here):
 - Retro Future - 80s Kids (Score: 3.46)
 
 Screenshot:
-![High-Energy Pop recommendations](assets/profile-high-energy-pop.png) — Terminal output showing top-5 with scores and reasons
+ ![High-Energy Pop recommendations](assets/profile-high-energy-pop.png) 
+
+— Terminal output showing top-5 with scores and reasons
 
 ### Profile 2: Chill Lofi
 
@@ -87,7 +89,9 @@ Top 5 recommendations (paste terminal output here):
 - Focus Flow - LoRoom (Score: 3.40)
 
 Screenshot:
-![Chill Lofi recommendations](assets/profile-chill-lofi.png) — Terminal output showing top-5 with scores and reasons
+ ![Chill Lofi recommendations](assets/profile-chill-lofi.png) 
+ 
+ — Terminal output showing top-5 with scores and reasons
 
 ### Profile 3: Deep Intense Rock
 
@@ -99,7 +103,9 @@ Top 5 recommendations (paste terminal output here):
 - Funkytown Express - The Grooveliner (Score: 3.00)
 
 Screenshot:
-![Deep Intense Rock recommendations](assets/profile-deep-intense-rock.png) — Terminal output showing top-5 with scores and reasons
+ ![Deep Intense Rock recommendations](assets/profile-deep-intense-rock.png) 
+ 
+ — Terminal output showing top-5 with scores and reasons
 
 ### Profile 4: Conflicting Happy but Low Energy
 
@@ -111,7 +117,9 @@ Top 5 recommendations (paste terminal output here):
 - Library Rain - Paper Lanterns (Score: 2.55)
 
 Screenshot:
-![Conflicting Happy but Low Energy recommendations](assets/profile-conflicting-happy-low-energy.png) — Terminal output showing top-5 with scores and reasons
+ ![Conflicting Happy but Low Energy recommendations](assets/profile-conflicting-happy-low-energy.png) 
+ 
+ — Terminal output showing top-5 with scores and reasons
 
 ### Profile 5: Sad but High Energy
 
@@ -123,7 +131,9 @@ Top 5 recommendations (paste terminal output here):
 - Viking Thunder - Odin's Echo (Score: 2.82)
 
 Screenshot:
-![Sad but High Energy recommendations](assets/profile-sad-high-energy.png) — Terminal output showing top-5 with scores and reasons
+ ![Sad but High Energy recommendations](assets/profile-sad-high-energy.png) 
+ 
+ — Terminal output showing top-5 with scores and reasons
 
 ### Profile 6: Noisy Mismatch
 
@@ -135,7 +145,9 @@ Top 5 recommendations (paste terminal output here):
 - Library Rain - Paper Lanterns (Score: 2.25)
 
 Screenshot:
-![Noisy Mismatch recommendations](assets/profile-noisy-mismatch.png) — Terminal output showing top-5 with scores and reasons
+ ![Noisy Mismatch recommendations](assets/profile-noisy-mismatch.png) 
+ 
+ — Terminal output showing top-5 with scores and reasons
 
 ---
 
