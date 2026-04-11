@@ -1,118 +1,81 @@
 # Music Recommender Model Card
 
-## 1. Model Name
+## Model Name
 
-VibeFinder Classroom Edition
+🎧 THE GENRE-BENDER
 
----
+## Goal / Task
 
-## 2. Intended Use
+This recommender tries to suggest songs a user might like.
+It looks at genre, mood, and energy.
+It gives each song a score and returns the top matches.
 
-This recommender suggests 5 songs from a small catalog based on what a user says they like.
-It is built for classroom learning, not for production use.
+Status: ACTIVE 🟢
 
-The model assumes a user can be described with only three inputs:
-- favorite genre
-- favorite mood
-- target energy (from 0.0 to 1.0)
-
----
-
-## 3. How the Model Works
-
-The model gives each song a score.
-
-It adds points for:
-- genre match
-- mood match
-- energy closeness
-
-In this version, energy closeness is multiplied by 3, so energy has a strong effect.
-This means high-energy songs can still rank near the top even when genre or mood does not match.
-
-Plain-language example:
-If someone asks for "Happy Pop" but also gives very high energy, songs like "Gym Hero" can keep showing up because they are very close on energy and still partly match the request.
-
----
-
-## 4. Data
+## 📂 Data Used
 
 The dataset has 20 songs in [data/songs.csv](data/songs.csv).
+Each song has genre, mood, energy, tempo, valence, danceability, and acousticness.
+The catalog is small, so it does not cover every kind of music taste.
+Some genres only have one or two songs.
 
-Genres include pop, lofi, rock, ambient, jazz, synthwave, indie pop, funk, metal, house, folk, and hiphop.
-Moods include happy, chill, intense, focused, and energetic.
+## ⚙️ Algorithm Summary
 
-This is a tiny catalog, so it does not represent the full range of music taste.
+The model gives points for a genre 🏷️ match, a mood 🎭 match, and energy 🔥 closeness.
+Genre and mood each add 1 point.
+Energy closeness is multiplied by 3, so it has the strongest effect.
+That means a song with close energy can rank high even if one other label does not match.
 
----
+## ⚠️ Observed Behavior / Biases
 
-## 5. Strengths
+One pattern is energy ⚡ dominance.
+High-energy songs often rise to the top, even when the user wanted a calmer feel.
+This can make songs like "Gym Hero" show up for many different profiles.
 
-The system works well when the user profile is clear and consistent.
+Another bias is small-data 📦 bias.
+With only 20 songs, the system repeats the same songs for some users because there are not many options.
+That is especially true for underrepresented genres like rock, metal, and jazz.
 
-Examples from testing:
-- "Chill Lofi" returned lofi/chill songs near the top.
-- "Deep Intense Rock" returned intense high-energy songs at the top.
+The model also has an energy-gap 📉 trap.
+Users with very low energy or very high energy can get weaker matches than mid-range users.
+That happens because the energy score is linear and the catalog does not have many songs at the extremes.
 
-Because the logic is simple, results are easy to explain to non-programmers.
+## 🧪 Evaluation Process
 
----
+I tested 6 profiles.
+Three were normal profiles and three were adversarial or conflicting profiles.
+The profiles were High-Energy Pop, Chill Lofi, Deep Intense Rock, Conflicting Happy but Low Energy, Sad but High Energy, and Noisy Mismatch.
 
-## 6. Limitations and Bias
+I checked the top 5 results for each profile.
+I also compared the outputs before and after a weight-shift experiment.
+That experiment showed that stronger energy weighting changed the ranking more than the genre weight did.
+I also compared the catalog genre counts with the recommendation counts to look for repetition and bias.
 
-One weakness is energy dominance.
-When the energy target is high, intense songs rise even if genre or mood does not match.
+## ✅ Intended Use and ❌ Non-Intended Use
 
-That can create a filter-bubble effect around "workout" tracks.
-In our tests, "Viking Thunder" became top-1 for 2 out of 6 profiles, including mismatch cases.
-"Gym Hero" appeared in multiple top-5 lists because its energy is very close to high-energy requests.
+This system is for classroom learning and simple experiments.
+It is good for showing how a scoring rule works.
+It is also good for explaining why a result ranked first.
 
-Another limitation is small-data bias.
-With only 20 songs, some profile types have too few true matches, so the model falls back to songs that are "numerically close" rather than "taste-correct."
+It should not be used as a real music app.
+It does not know lyrics, context, or personal history.
+It should not be treated as a full picture of a user's taste.
 
----
+## Ideas 💡 for Improvement
 
-## 7. Evaluation
+- Reduce the energy multiplier so genre and mood matter more.
+- Add more songs, especially for underrepresented genres.
+- Add diversity logic so the same songs do not keep repeating.
 
-We ran 6 profiles (3 standard + 3 adversarial/conflicting):
-- High-Energy Pop
-- Chill Lofi
-- Deep Intense Rock
-- Conflicting Happy but Low Energy
-- Sad but High Energy
-- Noisy Mismatch
+## Personal 💭 Reflection
 
-What we measured:
-- top-5 recommendations per profile
-- top-1 repetition rate
-- unique songs across all recommendations
-- genre distribution in catalog vs genre distribution in recommendations
+The biggest thing I learned was that a recommender can look balanced on paper and still behave unevenly in practice.
+A small weight choice changed which songs rose to the top, and that made me pay attention to the difference between a score that is mathematically correct and a result that actually feels right.
 
-Results:
-- Top-1 repetition rate: 0.33 (same song can dominate across different users)
-- Unique songs in all 30 recommended slots: 15
-- Catalog pop count: 2 songs, but pop appeared 6 times in recommendations
-- Lofi had 3 songs in catalog and appeared 4 times in recommendations
+AI tools, Gemini/Copilot - helped me move faster when I needed to test ideas, compare outputs, and write summaries.
+I still had to double-check them when the result depended on exact scores, because a tiny change in the numbers could change the ranking.
+That mattered most when I checked why "Gym Hero" kept appearing and when I tested the weight shift.
 
-Interpretation:
-The recommender is responsive to user inputs, but strong energy weighting can override mood and genre intent in edge cases.
-
----
-
-## 8. Future Work
-
-- Rebalance weights so genre and mood are not overwhelmed by energy
-- Add diversity logic so the same top songs do not repeat as often
-- Add a "must match mood" option for users who care more about feeling than intensity
-- Expand dataset coverage so more profile types have fair representation
-
----
-
-## 9. Personal Reflection
-
-This project showed how easy it is for a simple scoring rule to look "smart" while still missing user intent.
-Even with clear inputs, a weight choice can push the model toward songs that feel wrong to a person.
-
-It also changed how I think about music apps.
-If a song like "Gym Hero" keeps appearing, it may not mean the app "understands" me; it may just be over-prioritizing one signal.
-Human judgment is still important for deciding whether recommendations feel useful, not just mathematically consistent.
+What surprised me most was how simple rules can still feel like real recommendations.
+Even without any learning from users, the system could produce results that seemed sensible for one profile and wrong for another.
+If I kept extending this project, I would add more songs, rebalance the weights, and add a diversity rule so the same songs do not keep coming back.
