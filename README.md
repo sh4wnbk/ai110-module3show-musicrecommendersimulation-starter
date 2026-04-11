@@ -48,6 +48,11 @@ pytest
 ```
 
 ---
+- ![System data flow](assets/data_flow.PNG)
+
+## Recommendations (song titles, scores, and reasons)
+
+- ![Current recommendation output](assets/recommendation-output.png)
 
 ## Evaluation Profiles
 
@@ -61,7 +66,7 @@ These are the profiles used in stress testing:
 
 ---
 
-## Recommendation Results and Screenshot Placeholders
+## Recommendation Results
 
 Use this section to paste each profile's top-5 recommendations and add one screenshot per profile.
 
@@ -237,9 +242,3 @@ Good recommendation systems can't fix bad user intent. They can only amplify it.
 For a full analysis, see [model_card.md](model_card.md).
 
 ---
-
-## Existing Screenshot Assets
-
-These screenshots are currently in the repository:
-- ![Current recommendation output](assets/recommendation-output.png)
-- ![System data flow](assets/data_flow.PNG)
