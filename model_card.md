@@ -7,8 +7,9 @@
 ## Goal / Task
 
 This recommender tries to suggest songs a user might like.
- - Looks at genre, mood, and energy.
- - Gives each song a score and returns the top matches.
+- The input data is the song catalog, which stores attributes such as genre, mood, energy, tempo, and popularity.
+- The user preferences come from a profile, such as favorite genre, favorite mood, and target energy.
+- The ranking step compares the two, gives each song a score, sorts the songs, and returns the top matches.
 
 Status: ACTIVE 🟢
 

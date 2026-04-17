@@ -7,6 +7,7 @@ from src.recommender import (
     HybridStrategy,
 )
 
+
 def make_small_recommender() -> Recommender:
     songs = [
         Song(
@@ -53,6 +54,45 @@ def test_recommend_returns_songs_sorted_by_score():
     # Starter expectation: the pop, happy, high energy song should score higher
     assert results[0].genre == "pop"
     assert results[0].mood == "happy"
+
+
+def test_rank_songs_by_score_sorts_highest_first():
+    songs = [
+        Song(
+            id=1,
+            title="Low Score",
+            artist="A",
+            genre="none",
+            mood="none",
+            energy=0.1,
+            tempo_bpm=100,
+            valence=0.5,
+            danceability=0.5,
+            acousticness=0.2,
+            popularity=10,
+        ),
+        Song(
+            id=2,
+            title="High Score",
+            artist="B",
+            genre="none",
+            mood="none",
+            energy=0.9,
+            tempo_bpm=100,
+            valence=0.5,
+            danceability=0.5,
+            acousticness=0.2,
+            popularity=90,
+        ),
+    ]
+
+    ranked = Recommender.rank_songs_by_score([
+        (songs[0], 1.0, ["low"]),
+        (songs[1], 5.0, ["high"]),
+    ])
+
+    assert ranked[0][0].title == "High Score"
+    assert ranked[1][0].title == "Low Score"
 
 
 def test_explain_recommendation_returns_non_empty_string():

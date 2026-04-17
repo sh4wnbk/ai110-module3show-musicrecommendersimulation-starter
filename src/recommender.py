@@ -218,6 +218,11 @@ class Recommender:
         """Switch scoring behavior at runtime."""
         self.strategy = strategy
 
+    @staticmethod
+    def rank_songs_by_score(scored_songs: List[Tuple[Song, float, List[str]]]) -> List[Tuple[Song, float, List[str]]]:
+        """Return songs sorted from highest score to lowest score."""
+        return sorted(scored_songs, key=lambda item: item[1], reverse=True)
+
     def recommend_with_details(self, user: UserProfile, k: int = 5) -> List[Tuple[Song, float, List[str]]]:
         """Ranks songs and includes adjusted scores/reasons with diversity penalties applied."""
         base_details: Dict[int, Tuple[Song, float, List[str]]] = {}
@@ -225,7 +230,8 @@ class Recommender:
             score, reasons = self.strategy.calculate_score(user, song)
             base_details[song.id] = (song, score, reasons)
 
-        remaining_ids = list(base_details.keys())
+        ranked_candidates = self.rank_songs_by_score(list(base_details.values()))
+        remaining_ids = [song.id for song, _, _ in ranked_candidates]
         selected: List[Tuple[Song, float, List[str]]] = []
 
         while remaining_ids and len(selected) < k:

@@ -11,7 +11,12 @@ The goal is to show how recommendation logic works, where it helps, and where it
 
 ## How the System Works
 
-The recommender scores each song using three signals:
+The system has three separate parts:
+- input data: the song catalog, where each song has attributes like genre, mood, energy, and popularity
+- user preferences: the profile values the user asks for, like favorite genre, favorite mood, and target energy
+- ranking/selection: the scoring function compares the user preferences against each song, then sorts the songs by score and returns the top matches
+
+The recommender scores each song using three main signals:
 - genre match
 - mood match
 - energy closeness
